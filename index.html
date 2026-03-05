@@ -137,6 +137,27 @@
     }
     .customer-track::-webkit-scrollbar{height:6px}
     .customer-track::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:10px}
+    .carousel-dots{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:.45rem;
+      margin-top:.8rem;
+    }
+    .carousel-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(255,255,255,.15);
+      cursor:pointer;
+      transition:transform .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    .carousel-dot.active{
+      background:#67e8f9;
+      border-color:#67e8f9;
+      transform:scale(1.15);
+    }
     .customer-item{
       position:relative;
       border-radius:.9rem;
@@ -310,6 +331,7 @@
             <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.22.16.jpeg" alt="Happy customer photo 8"><span>Tour Day</span></article>
             <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.22.18.jpeg" alt="Happy customer photo 9"><span>Best Memories</span></article>
           </div>
+          <div class="carousel-dots" id="customer-dots" aria-label="Carousel indicators"></div>
         </div>
       </div>
     </section>
@@ -360,14 +382,57 @@
       var track = document.getElementById('customer-track');
       var prev = document.getElementById('customer-prev');
       var next = document.getElementById('customer-next');
-      if (!track || !prev || !next) return;
+      var dotsWrap = document.getElementById('customer-dots');
+      if (!track || !prev || !next || !dotsWrap) return;
+      var items = Array.prototype.slice.call(track.querySelectorAll('.customer-item'));
       var autoTimer = null;
+
       function slide(dir) {
         var amount = Math.max(track.clientWidth * 0.8, 260) * dir;
         track.scrollBy({ left: amount, behavior: 'smooth' });
       }
       prev.addEventListener('click', function () { slide(-1); });
       next.addEventListener('click', function () { slide(1); });
+
+      function getNearestIndex() {
+        var trackRect = track.getBoundingClientRect();
+        var trackCenter = trackRect.left + (trackRect.width / 2);
+        var nearest = 0;
+        var nearestDistance = Infinity;
+        items.forEach(function (item, i) {
+          var rect = item.getBoundingClientRect();
+          var center = rect.left + (rect.width / 2);
+          var distance = Math.abs(center - trackCenter);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearest = i;
+          }
+        });
+        return nearest;
+      }
+
+      function setActiveDot(index) {
+        var dots = dotsWrap.querySelectorAll('.carousel-dot');
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+
+      items.forEach(function (item, i) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', function () {
+          item.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          setActiveDot(i);
+        });
+        dotsWrap.appendChild(dot);
+      });
+
+      track.addEventListener('scroll', function () {
+        setActiveDot(getNearestIndex());
+      }, { passive: true });
 
       function startAutoSlide() {
         stopAutoSlide();
