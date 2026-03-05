@@ -105,6 +105,59 @@
 
     .cta{margin-top:1.4rem;border:1px solid rgba(103,232,249,.4);border-radius:1rem;padding:1.2rem;background:linear-gradient(120deg,rgba(8,47,73,.46),rgba(46,16,101,.54));display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
     .cta p{margin:0;color:#dbeafe}
+    .customer-wrap{
+      border:1px solid rgba(103,232,249,.35);
+      border-radius:1.2rem;
+      padding:1rem;
+      background:linear-gradient(140deg,rgba(3,8,24,.85),rgba(8,47,73,.45));
+      box-shadow:0 18px 36px rgba(2,6,23,.36);
+    }
+    .customer-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      margin-bottom:.9rem;
+    }
+    .customer-head p{margin:0;color:var(--muted)}
+    .carousel-actions{display:flex;gap:.5rem}
+    .carousel-btn{
+      width:38px;height:38px;border-radius:999px;border:1px solid rgba(255,255,255,.25);
+      background:rgba(255,255,255,.08);color:#fff;cursor:pointer;
+    }
+    .customer-track{
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(220px, 1fr);
+      gap:.75rem;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      padding-bottom:.25rem;
+    }
+    .customer-track::-webkit-scrollbar{height:6px}
+    .customer-track::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:10px}
+    .customer-item{
+      position:relative;
+      border-radius:.9rem;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.2);
+      min-height:240px;
+      scroll-snap-align:start;
+    }
+    .customer-item img{
+      width:100%;height:100%;object-fit:cover;
+      transition:.25s transform;
+    }
+    .customer-item:hover img{transform:scale(1.05)}
+    .customer-item span{
+      position:absolute;
+      left:.55rem;bottom:.55rem;
+      font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;
+      color:#e2e8ff;background:rgba(2,6,23,.74);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;padding:.2rem .48rem;
+    }
     .booking-section{
       padding:2.2rem 0 4rem;
       margin-top:-1rem;
@@ -232,6 +285,35 @@
       </div>
     </section>
 
+    <section class="section" id="happy-customers">
+      <div class="container">
+        <div class="section-head">
+          <h2>Happy Customers</h2>
+          <p>Real moments captured during YAN Travel rides and tours across Sri Lanka.</p>
+        </div>
+        <div class="customer-wrap">
+          <div class="customer-head">
+            <p>Swipe or use arrows to explore customer memories.</p>
+            <div class="carousel-actions">
+              <button type="button" class="carousel-btn" id="customer-prev" aria-label="Previous customer images"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="carousel-btn" id="customer-next" aria-label="Next customer images"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+          <div class="customer-track" id="customer-track">
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/584408046_122109692835062228_2170317404448982882_n.jpg" alt="Happy customer photo 1"><span>YAN Guests</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.21.45.jpeg" alt="Happy customer photo 2"><span>Airport Pickup</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.21.48.jpeg" alt="Happy customer photo 3"><span>City Tour</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.21.49.jpeg" alt="Happy customer photo 4"><span>Family Ride</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.21.50.jpeg" alt="Happy customer photo 5"><span>Road Trip</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.21.51.jpeg" alt="Happy customer photo 6"><span>Scenic Stop</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.22.00.jpeg" alt="Happy customer photo 7"><span>Guest Moment</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.22.16.jpeg" alt="Happy customer photo 8"><span>Tour Day</span></article>
+            <article class="customer-item"><img loading="lazy" src="images/lakshan/WhatsApp%20Image%202025-11-17%20at%2021.22.18.jpeg" alt="Happy customer photo 9"><span>Best Memories</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="reviews">
       <div class="container">
         <div class="section-head"><h2>What Travelers Say</h2><p>Real feedback from recent YAN Travel bookings.</p></div>
@@ -273,6 +355,44 @@
         card.style.transform = '';
       });
     });
+
+    (function () {
+      var track = document.getElementById('customer-track');
+      var prev = document.getElementById('customer-prev');
+      var next = document.getElementById('customer-next');
+      if (!track || !prev || !next) return;
+      var autoTimer = null;
+      function slide(dir) {
+        var amount = Math.max(track.clientWidth * 0.8, 260) * dir;
+        track.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+      prev.addEventListener('click', function () { slide(-1); });
+      next.addEventListener('click', function () { slide(1); });
+
+      function startAutoSlide() {
+        stopAutoSlide();
+        autoTimer = setInterval(function () { slide(1); }, 3000);
+      }
+
+      function stopAutoSlide() {
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      track.addEventListener('mouseenter', stopAutoSlide);
+      track.addEventListener('mouseleave', startAutoSlide);
+      track.addEventListener('touchstart', stopAutoSlide, { passive: true });
+      track.addEventListener('touchend', startAutoSlide, { passive: true });
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stopAutoSlide();
+        else startAutoSlide();
+      });
+
+      startAutoSlide();
+    })();
   </script>
 </body>
 </html>
