@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAN Travel | Gen Z 3D Travel Experience</title>
+  <meta name="description" content="Modern Sri Lanka airport transfer and tours with instant WhatsApp booking.">
+  <meta property="og:title" content="YAN Travel | Gen Z 3D Travel Experience">
+  <meta property="og:description" content="Modern bookings, reliable drivers, premium rides.">
+  <meta property="og:image" content="https://yantravel-srilanka.netlify.app/logo.png">
+  <meta property="og:url" content="https://yantravel-srilanka.netlify.app/">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      --text:#ecf2ff;
+      --muted:#bfd0f9;
+      --line:rgba(255,255,255,.2);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:'Space Grotesk',sans-serif;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(34,197,94,.22), transparent 35%),
+        radial-gradient(circle at 86% 14%, rgba(6,182,212,.23), transparent 37%),
+        radial-gradient(circle at 45% 92%, rgba(124,58,237,.23), transparent 40%),
+        linear-gradient(180deg,#070b16 0%,#060911 100%);
+      overflow-x:hidden;
+    }
+    h1,h2,h3,h4{font-family:'Sora',sans-serif;margin:0}
+    .container{width:min(1120px,92vw);margin:0 auto}
+
+    .hero{
+      min-height:95vh;
+      padding:9rem 0 4rem;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(115deg,rgba(5,9,24,.92),rgba(9,16,35,.68)),url('images/banner.png');
+      background-size:cover;
+      background-position:center;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;transform:translateY(-24px)}
+    .hero-grid > div{display:flex;flex-direction:column;justify-content:center}
+    .hero-grid > div:last-child{align-items:flex-end}
+    .micro{display:inline-flex;gap:.5rem;align-items:center;border:1px solid rgba(103,232,249,.35);background:rgba(103,232,249,.12);padding:.45rem .85rem;border-radius:999px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#a5f3fc;margin-bottom:1rem}
+    .hero h1{font-size:clamp(2.1rem,7vw,4.4rem);line-height:1.03;max-width:13ch}
+    .grad{background:linear-gradient(90deg,#67e8f9,#22d3ee,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);line-height:1.65;max-width:42ch}
+
+    .hero-actions{margin-top:1.2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{display:inline-flex;gap:.45rem;align-items:center;text-decoration:none;color:#fff;font-weight:700;border-radius:.85rem;padding:.82rem 1.05rem;border:1px solid transparent;transition:.2s transform}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-main{background:linear-gradient(130deg,#06b6d4,#7c3aed);box-shadow:0 14px 30px rgba(88,80,236,.35)}
+    .btn-ghost{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.2)}
+
+    .kpis{margin-top:1.4rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;max-width:560px}
+    .kpi{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:1rem;padding:.85rem}
+    .kpi strong{display:block;font-size:1.25rem}
+    .kpi span{font-size:.75rem;color:#c7d2fe;letter-spacing:.08em;text-transform:uppercase}
+
+    .stack{display:grid;gap:1rem;perspective:1200px;width:min(100%,620px)}
+    .stack-card{display:grid;grid-template-columns:100px 1fr;gap:1rem;align-items:center;padding:1rem;border-radius:1rem;border:1px solid rgba(255,255,255,.24);background:rgba(10,16,35,.82);transform-style:preserve-3d;transition:.25s transform,.25s border-color}
+    .stack-card:nth-child(1){transform:translateX(0) rotateY(-8deg)}
+    .stack-card:nth-child(2){transform:translateX(16px) rotateY(-5deg)}
+    .stack-card:nth-child(3){transform:translateX(30px) rotateY(-2deg)}
+    .stack-card:hover{transform:translateY(-4px) rotateY(0);border-color:rgba(103,232,249,.75)}
+    .stack-card img{width:100%;height:72px;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.35))}
+    .stack-card p{margin:0;color:#c7d2fe;font-size:.86rem}
+
+    .section{padding:4.4rem 0}
+    .section-head{margin-bottom:1.2rem}
+    .section-head h2{font-size:clamp(1.6rem,4vw,2.7rem);margin-bottom:.35rem}
+    .section-head p{margin:0;color:var(--muted)}
+
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+    .card{min-height:340px;background:rgba(10,16,35,.88);border:1px solid rgba(255,255,255,.16);border-radius:1rem;overflow:hidden;transform-style:preserve-3d;transition:.2s border-color,.2s box-shadow}
+    .card:hover{border-color:rgba(103,232,249,.55);box-shadow:0 16px 32px rgba(5,10,24,.45)}
+    .card img{width:100%;height:190px;object-fit:cover}
+    .card .body{padding:1rem}
+    .card .body h3{margin-bottom:.5rem}
+    .card .body p{margin:0;color:#c7d2fe;line-height:1.5}
+    .tag{position:absolute;top:.75rem;right:.75rem;background:linear-gradient(130deg,#06b6d4,#7c3aed);border-radius:999px;padding:.3rem .6rem;font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+
+    .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
+    .g-item{position:relative;border-radius:1rem;overflow:hidden;border:1px solid rgba(255,255,255,.18);min-height:220px;box-shadow:0 10px 24px rgba(2,6,23,.4)}
+    .g-item img{width:100%;height:100%;object-fit:cover;transition:.25s transform}
+    .g-item:hover img{transform:scale(1.08)}
+    .g-item span{position:absolute;left:.7rem;bottom:.7rem;background:rgba(2,6,23,.75);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:.3rem .6rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#e0f2fe}
+
+    .reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .review{background:linear-gradient(155deg,rgba(2,6,23,.95),rgba(15,23,42,.95));border:1px solid rgba(255,255,255,.16);border-radius:1rem;padding:1.15rem}
+    .review h4{margin:.55rem 0 .45rem}
+    .review p{margin:0;color:#cbd5ff;line-height:1.55}
+
+    .cta{margin-top:1.4rem;border:1px solid rgba(103,232,249,.4);border-radius:1rem;padding:1.2rem;background:linear-gradient(120deg,rgba(8,47,73,.46),rgba(46,16,101,.54));display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .cta p{margin:0;color:#dbeafe}
+    .booking-section{
+      padding:2.2rem 0 4rem;
+      margin-top:-1rem;
+      position:relative;
+    }
+    .booking-shell{
+      border:1px solid rgba(103,232,249,.35);
+      border-radius:1.2rem;
+      background:linear-gradient(130deg,rgba(8,47,73,.35),rgba(46,16,101,.35));
+      padding:1.2rem;
+      box-shadow:0 20px 40px rgba(2,6,23,.35);
+    }
+    .booking-shell h2{
+      font-size:clamp(1.4rem,3.5vw,2rem);
+      margin:0 0 .35rem;
+    }
+    .booking-shell p{
+      margin:0 0 1rem;
+      color:var(--muted);
+    }
+    #index-booking-form{width:100%;max-width:100%}
+    @media (max-width:1060px){
+      .hero-grid,.cards,.reviews,.gallery{grid-template-columns:1fr 1fr}
+      .hero{padding-top:8rem}
+      .stack{margin-top:1rem}
+      .hero-grid > div:last-child{align-items:stretch}
+      .hero-grid{transform:translateY(-10px)}
+    }
+    @media (max-width:760px){
+      .hero-grid,.cards,.reviews,.gallery{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr 1fr}
+      .stack-card:nth-child(1),.stack-card:nth-child(2),.stack-card:nth-child(3){transform:none}
+      .hero{min-height:auto}
+      .hero-grid > div{align-items:stretch}
+      .hero-grid{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="micro"><i class="fa-solid fa-wand-magic-sparkles"></i> New vibe for 2026</span>
+          <h1>Hire a Luxury Taxi in <span class="grad">Sri Lanka</span></h1>
+          <p>YAN Travel gives you smooth airport pickups, creator-friendly tour routes, and premium rides with zero stress. Book directly on WhatsApp in seconds.</p>
+          <div class="hero-actions">
+            <a class="btn btn-main" href="https://wa.me/94703577490?text=Hi YAN Travel, I want to book a trip."><i class="fab fa-whatsapp"></i> Book Instantly</a>
+            <a class="btn btn-ghost" href="#tours"><i class="fa-solid fa-location-dot"></i> Explore Tours</a>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><strong>4.9/5</strong><span>Traveler Rating</span></div>
+            <div class="kpi"><strong>24/7</strong><span>Support Crew</span></div>
+            <div class="kpi"><strong>1000+</strong><span>Successful Trips</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="stack">
+            <article class="stack-card">
+              <img loading="lazy" src="images/vehicle1.jpg" alt="Sedan">
+              <div><h3>Urban Sedan</h3><p>Perfect for airport transfers and city hops. 2-3 travelers.</p></div>
+            </article>
+            <article class="stack-card">
+              <img loading="lazy" src="images/vehicle8.png" alt="KDH Van">
+              <div><h3>Creator Van</h3><p>Extra space for reels, luggage, and road trip equipment.</p></div>
+            </article>
+            <article class="stack-card">
+              <img loading="lazy" src="images/vehicle4.jpg" alt="High Roof Van">
+              <div><h3>Group Explorer</h3><p>Comfort-first setup for families and larger groups.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="book-now">
+      <div class="container">
+        <div class="booking-shell">
+          <h2>Book Your Ride in 30 Seconds</h2>
+          <p>Simple form, instant WhatsApp confirmation, and quick response from YAN Travel.</p>
+          <div id="index-booking-form"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tours">
+      <div class="container">
+        <div class="section-head"><h2>Trending Tours</h2><p>Built for new-age travelers: cinematic views and social-worthy routes.</p></div>
+        <div class="cards">
+          <article class="card" data-tilt><span class="tag">Top Pick</span><img loading="lazy" src="images/destinations/sigiriya&kandy.png" alt="Cultural Escape"><div class="body"><h3>Cultural Escape</h3><p>Sigiriya + Kandy journey with temples, mountains, and heritage spots.</p></div></article>
+          <article class="card" data-tilt><span class="tag">Wild</span><img loading="lazy" src="images/destinations/safari_package.jpg" alt="Safari"><div class="body"><h3>Safari Vibes</h3><p>Yala and Udawalawe route to catch Sri Lanka's iconic wildlife moments.</p></div></article>
+          <article class="card" data-tilt><span class="tag">Chill</span><img loading="lazy" src="images/destinations/tea_plantation.jpg" alt="Tea Hills"><div class="body"><h3>Tea Hills Run</h3><p>Nuwara Eliya and Ella with cool climate and tea estates.</p></div></article>
+          <article class="card" data-tilt><span class="tag">Coast</span><img loading="lazy" src="images/destinations/beach.jpg" alt="South Coast"><div class="body"><h3>South Coast Mood</h3><p>Galle and Mirissa beaches, sunsets, cafes, and ocean adventures.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head"><h2>Homepage Image Collection</h2><p>Your original destination visuals in a modern 3D gallery style.</p></div>
+        <div class="gallery">
+          <article class="g-item"><img loading="lazy" src="images/destinations/wilpaththu.jpg.webp" alt="Wilpattu"><span>Wilpattu</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/whale_trinco.jpg" alt="Trincomalee"><span>Trincomalee</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/surf_aru.jpg" alt="Arugam Bay"><span>Arugam Bay</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/sigiri.jpg" alt="Sigiriya"><span>Sigiriya</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/Temple_of_the_Tooth.jpg" alt="Kandy"><span>Kandy</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/madu_river.jpg" alt="Madu River"><span>Madu River</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/galle-dutch-fort-lighthouse.jpg" alt="Galle"><span>Galle Fort</span></article>
+          <article class="g-item"><img loading="lazy" src="images/destinations/Hot-Air-Balloon-Ride-In-Dambulla.jpg" alt="Dambulla"><span>Dambulla</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fleet">
+      <div class="container">
+        <div class="section-head"><h2>Premium Fleet</h2><p>Modern vehicles with clean interiors and experienced drivers.</p></div>
+        <div class="cards">
+          <article class="card" data-tilt><img loading="lazy" src="images/vehicle1.jpg" alt="Sedan"><div class="body"><h3>Sedan Car</h3><p>Great for airport transfers and city rides.</p><a class="btn btn-ghost" href="https://wa.me/94703577490?text=I want to book a Sedan Car">Book Sedan</a></div></article>
+          <article class="card" data-tilt><img loading="lazy" src="images/vehicle8.png" alt="Flat Roof Van"><div class="body"><h3>Flat Roof Van</h3><p>Best for small groups with extra legroom and luggage space.</p><a class="btn btn-ghost" href="https://wa.me/94703577490?text=I want to book a Flat Roof Van">Book Van</a></div></article>
+          <article class="card" data-tilt><img loading="lazy" src="images/vehicle4.jpg" alt="High Roof"><div class="body"><h3>High Roof Van</h3><p>Perfect for families and long tours with comfort.</p><a class="btn btn-ghost" href="https://wa.me/94703577490?text=I want to book a High Roof Van">Book High Roof</a></div></article>
+          <article class="card" data-tilt><img loading="lazy" src="images/vehicle6.jpg" alt="Executive"><div class="body"><h3>Executive Ride</h3><p>Premium transfer option for business and VIP travel.</p><a class="btn btn-ghost" href="https://wa.me/94703577490?text=I want to book an Executive Ride">Book Executive</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head"><h2>What Travelers Say</h2><p>Real feedback from recent YAN Travel bookings.</p></div>
+        <div class="reviews">
+          <article class="review"><div style="color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><h4>Smooth + Professional</h4><p>"Our van to Ella was super clean and on time. Driver was friendly and knew every scenic stop."</p></article>
+          <article class="review"><div style="color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><h4>Best Value</h4><p>"Transparent prices and very fast WhatsApp replies. Airport pickup was effortless."</p></article>
+          <article class="review"><div style="color:#fbbf24"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><h4>Safe Solo Travel</h4><p>"As a solo traveler, I felt completely safe and supported throughout the trip."</p></article>
+        </div>
+        <div class="cta">
+          <p><strong>Ready to lock your trip?</strong> Message YAN Travel and get your custom route + price.</p>
+          <a class="btn btn-main" href="https://wa.me/94703577490?text=Hi, I need a custom Sri Lanka travel plan."><i class="fab fa-whatsapp"></i> Start on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+  <script src="booking-form.js"></script>
+  <script>
+    YANBookingForm.mount('index-booking-form', {
+      title: 'Airport Transfer & Tours',
+      subtitle: 'Send your request directly to WhatsApp.',
+      page: 'Home'
+    });
+
+    document.querySelectorAll('[data-tilt]').forEach(function (card) {
+      card.addEventListener('mousemove', function (event) {
+        var rect = card.getBoundingClientRect();
+        var x = event.clientX - rect.left;
+        var y = event.clientY - rect.top;
+        var rx = ((y / rect.height) - 0.5) * -10;
+        var ry = ((x / rect.width) - 0.5) * 12;
+        card.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-3px)';
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+  </script>
+</body>
+</html>

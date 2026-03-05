@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAN Fleet | 3D Modern Vehicle Lineup</title>
+    <meta name="description" content="Explore YAN Travel's premium fleet in Sri Lanka: cars, vans, and group transport with transparent pricing.">
+    <meta name="keywords" content="Sri Lanka fleet, taxi vehicles Sri Lanka, KDH van hire, airport transfer car">
+
+    <meta property="og:title" content="YAN Fleet | 3D Modern Vehicle Lineup">
+    <meta property="og:description" content="Choose the right vehicle for your Sri Lanka trip with YAN Travel.">
+    <meta property="og:image" content="https://yantravel-srilanka.netlify.app/logo.png">
+    <meta property="og:url" content="https://yantravel-srilanka.netlify.app/fleet.html">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --text: #edf3ff; --muted: #bfd0f9; --line: rgba(255, 255, 255, 0.2); }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Space Grotesk', sans-serif; color: var(--text); background: radial-gradient(circle at 7% 8%, rgba(34, 197, 94, 0.2) 0, transparent 34%), radial-gradient(circle at 88% 15%, rgba(6, 182, 212, 0.2) 0, transparent 35%), linear-gradient(180deg, #070a16 0%, #060911 100%); }
+        h1, h2, h3 { font-family: 'Sora', sans-serif; margin: 0; }
+        .container { width: min(1120px, 92vw); margin: 0 auto; }
+        .hero { min-height: 62vh; padding: 8.5rem 0 3rem; position: relative; overflow: hidden; }
+        .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(120deg, rgba(6, 10, 24, 0.92), rgba(9, 15, 34, 0.64)), url('images/car.jpg'); background-size: cover; background-position: center; }
+        .hero h1 { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 0.8rem; max-width: 12ch; }
+        .hero p { margin: 0; color: var(--muted); max-width: 56ch; line-height: 1.7; }
+        .badge { display: inline-flex; align-items: center; gap: 0.45rem; margin-bottom: 0.95rem; background: rgba(103, 232, 249, 0.14); border: 1px solid rgba(103, 232, 249, 0.3); border-radius: 999px; padding: 0.42rem 0.82rem; font-size: 0.75rem; letter-spacing: 0.13em; text-transform: uppercase; color: #a5f3fc; }
+        .section { padding: 4.2rem 0; }
+        .notice { border: 1px solid rgba(103, 232, 249, 0.38); border-radius: 1rem; background: linear-gradient(130deg, rgba(14, 116, 144, 0.35), rgba(76, 29, 149, 0.35)); padding: 1rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .notice p { margin: 0; color: #e2ebff; }
+        .notice a { color: #fff; text-decoration: none; font-weight: 700; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 0.7rem; padding: 0.5rem 0.8rem; }
+        .grid { margin-top: 1rem; display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .vehicle { background: rgba(10, 16, 35, 0.86); border: 1px solid var(--line); border-radius: 1.05rem; overflow: hidden; transform-style: preserve-3d; transition: transform 190ms ease, border-color 190ms ease; min-height: 380px; }
+        .vehicle:hover { border-color: rgba(103, 232, 249, 0.56); }
+        .vehicle img { width: 100%; height: 175px; object-fit: cover; }
+        .vehicle-body { padding: 1rem; }
+        .vehicle h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .vehicle p { margin: 0 0 0.45rem; color: #c5d4fb; line-height: 1.5; }
+        .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.55rem 0 0.85rem; }
+        .meta span { font-size: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; padding: 0.25rem 0.52rem; color: #d7e3ff; }
+        .book { display: inline-flex; align-items: center; gap: 0.45rem; text-decoration: none; color: #fff; background: linear-gradient(130deg, #06b6d4, #7c3aed); border-radius: 0.78rem; padding: 0.62rem 0.85rem; font-weight: 700; font-size: 0.88rem; }
+        @media (max-width: 1080px) { .grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .hero { min-height: auto; padding-top: 7.2rem; } }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="badge"><i class="fa-solid fa-car-side"></i> Fleet 2026</span>
+                <h1>Choose Your Ride Style</h1>
+                <p>From budget city rides to premium group vans, our fleet is built for comfort, safety, and long Sri Lanka road trips.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="notice">
+                    <p><strong>Transparent Pricing:</strong> Per-km rates depend on route, vehicle class, and trip duration. Fuel and driver included.</p>
+                    <a href="https://wa.me/94703577490?text=Hi YAN Travel, can I get the latest fleet rates?">Get Live Rate</a>
+                </div>
+
+                <div class="grid">
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle5.png" alt="Flex Car"><div class="vehicle-body"><h3>Flex / Budget</h3><p>Suzuki Alto or similar for city transfers and short rides.</p><div class="meta"><span>2 Pax</span><span>1 Bag</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book the Flex/Budget car"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle6.jpg" alt="Comfort Sedan"><div class="vehicle-body"><h3>Comfort Sedan</h3><p>Prius/Axio class for airport pickups and intercity comfort rides.</p><div class="meta"><span>3 Pax</span><span>2 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a Comfort Sedan"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle7.jpg" alt="Mini Van"><div class="vehicle-body"><h3>Mini Van</h3><p>Avanza class for small families and weekend trips.</p><div class="meta"><span>4-6 Pax</span><span>4 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a Mini Van"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle8.png" alt="Flat Roof Van"><div class="vehicle-body"><h3>Flat Roof Van</h3><p>KDH / Hiace flat roof setup for group comfort travel.</p><div class="meta"><span>6 Pax</span><span>6 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a Flat Roof Van"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle4.jpg" alt="High Roof Van"><div class="vehicle-body"><h3>High Roof Van</h3><p>Super GL/KDH high roof for long tours and bigger groups.</p><div class="meta"><span>7-9 Pax</span><span>7 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a High Roof Van"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle3.jpg" alt="SUV"><div class="vehicle-body"><h3>Adventure SUV</h3><p>Strong and spacious option for mixed terrain routes.</p><div class="meta"><span>4 Pax</span><span>4 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book an Adventure SUV"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle2.jpg" alt="Premium Van"><div class="vehicle-body"><h3>Premium Van</h3><p>Balanced space and comfort for extended scenic routes.</p><div class="meta"><span>6-8 Pax</span><span>6 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a Premium Van"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                    <article class="vehicle" data-tilt><img loading="lazy" src="images/vehicle1.jpg" alt="Touring Car"><div class="vehicle-body"><h3>Classic Touring Car</h3><p>Reliable all-round option for custom island itineraries.</p><div class="meta"><span>2-3 Pax</span><span>3 Bags</span><span>A/C</span></div><a class="book" href="https://wa.me/94703577490?text=I want to book a Classic Touring Car"><i class="fab fa-whatsapp"></i> Book Now</a></div></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="navbar.js"></script>
+    <script src="footer.js"></script>
+    <script>
+        document.querySelectorAll('[data-tilt]').forEach(function (card) {
+            card.addEventListener('mousemove', function (event) {
+                var rect = card.getBoundingClientRect();
+                var x = event.clientX - rect.left;
+                var y = event.clientY - rect.top;
+                var rx = ((y / rect.height) - 0.5) * -10;
+                var ry = ((x / rect.width) - 0.5) * 12;
+                card.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+        });
+    </script>
+</body>
+</html>

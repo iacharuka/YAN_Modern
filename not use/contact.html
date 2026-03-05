@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | YAN Travel Sri Lanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        body { font-family: 'Lato', sans-serif; }
+        h1, h2, h3, .btn-font { font-family: 'Poppins', sans-serif; }
+        
+        /* Header Background */
+        .page-header {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1596561266260-250754acb3c2?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Map Container */
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div id="navbar-container"></div>
+    <script src="navbar.js"></script>
+
+    <section class="page-header">
+        <div class="container px-4 pt-20">
+            <h1 class="text-5xl font-black text-white mb-4 drop-shadow-lg">Contact Us</h1>
+            <p class="text-xl text-gray-200 font-medium">We are here to help plan your perfect trip 24/7</p>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                
+                <div>
+                    <h2 class="text-3xl font-black text-blue-900 mb-8">Get in Touch</h2>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start">
+                            <div class="bg-green-100 p-3 rounded-full mr-4 text-green-600">
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">WhatsApp</h4>
+                                <p class="text-sm text-gray-500 mt-1">070 357 7490</p>
+                                <p class="text-xs text-green-600 font-bold mt-1">Available 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-900">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Email</h4>
+                                <p class="text-sm text-gray-500 mt-1">yantravelofficial@gmail.com</p>
+                                <p class="text-xs text-blue-600 font-bold mt-1">Replies in 1 hour</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container h-80 bg-gray-200 rounded-xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63371.803855953586!2d79.82118600843432!3d6.921922576115975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1709234567890!5m2!1sen!2slk" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-2">Send us a Message</h3>
+                    <p class="text-gray-500 mb-6">Have a custom request? Fill this out and we'll reply via WhatsApp instantly.</p>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="contactName" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 outline-none focus:border-amber-500 transition" placeholder="John Doe">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Subject</label>
+                            <select id="contactSubject" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 outline-none focus:border-amber-500 transition">
+                                <option>General Inquiry</option>
+                                <option>Custom Tour Package</option>
+                                <option>Wedding / Event Transport</option>
+                                <option>Urgent Booking</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+                            <textarea id="contactMessage" rows="5" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 outline-none focus:border-amber-500 transition" placeholder="Tell us what you need..."></textarea>
+                        </div>
+
+                        <button type="button" onclick="sendContactToWhatsApp()" class="w-full bg-blue-900 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i> SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+    <script src="footer.js"></script>
+
+    <script>
+        function sendContactToWhatsApp() {
+            var name = document.getElementById('contactName').value;
+            var subject = document.getElementById('contactSubject').value;
+            var message = document.getElementById('contactMessage').value;
+
+            if(name === "" || message === "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please enter your Name and Message!',
+                    confirmButtonColor: '#1e3a8a'
+                });
+                return;
+            }
+
+            var phoneNumber = "94703577490"; 
+            
+            var whatsappMessage = 
+                "*NEW WEBSITE INQUIRY* 📩%0A" +
+                "---------------------------%0A" +
+                "👤 *Name:* " + name + "%0A" +
+                "📝 *Subject:* " + subject + "%0A" +
+                "💬 *Message:* " + message + "%0A" +
+                "---------------------------";
+
+            var url = "https://wa.me/" + phoneNumber + "?text=" + whatsappMessage;
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>
