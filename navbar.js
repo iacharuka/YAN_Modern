@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', function () {
     container.innerHTML = `
         <nav class="yan-navbar" id="yan-navbar">
             <div class="yan-nav-wrap">
-                <a href="index.html" class="yan-logo" aria-label="YAN Travels Home">
-                    <img src="images/logo2.webp" alt="YAN Travels" />
+                <a href="index.html" class="yan-logo" aria-label="YanTravels Home">
+                    <img src="images/logo2.webp" alt="YanTravels" />
                 </a>
 
                 <div class="yan-links">
