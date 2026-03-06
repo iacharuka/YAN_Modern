@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <a href="fleet.html">Fleet</a>
                     <a href="activities.html">Activities</a>
                     <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
                     <a href="https://wa.me/94703577490" class="yan-cta"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
 
@@ -136,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <a href="fleet.html">Fleet</a>
                 <a href="activities.html">Activities</a>
                 <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
                 <a href="https://wa.me/94703577490"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </nav>
