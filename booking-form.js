@@ -264,6 +264,7 @@
             var phoneNumber = '94703577490';
             var pageName = config.page || 'Website';
             var message = [
+                'Hi YanTravels,',
                 '*NEW BOOKING INQUIRY* 🇱🇰',
                 '------------------------------',
                 '🌐 Source Page: ' + pageName,

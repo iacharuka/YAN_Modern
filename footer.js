@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="yan-footer-wrap">
                 <div class="yan-footer-grid">
                     <section>
-                        <a href="index.html"><img class="yan-footer-logo" src="images/logo2.webp" alt="YAN Travel" /></a>
+                        <a href="index.html"><img class="yan-footer-logo" src="images/logo2.webp" alt="YanTravels" /></a>
                         <p>Reliable Sri Lanka transport and tours with friendly local drivers and fast WhatsApp support.</p>
                         <div class="yan-socials">
                             <a href="https://web.facebook.com/profile.php?id=61581866861276" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -136,11 +136,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     </section>
                 </div>
 
-                <div class="yan-footer-bottom">&copy; ${year} YAN Travel Sri Lanka. All rights reserved.</div>
+                <div class="yan-footer-bottom">&copy; ${year} YanTravels Sri Lanka. All rights reserved.</div>
             </div>
         </footer>
 
-        <a class="yan-float" href="https://wa.me/94703577490?text=Hi YAN Travel, I would like to ask about bookings." aria-label="WhatsApp">
+        <a class="yan-float" href="https://wa.me/94703577490?text=Hi YanTravels, I would like to ask about bookings." aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     `;
