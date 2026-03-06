@@ -8,112 +8,91 @@ document.addEventListener('DOMContentLoaded', function () {
         style.id = styleId;
         style.textContent = `
             .yan-footer {
-                margin-top: 2rem;
-                border-top: 1px solid rgba(103, 232, 249, 0.25);
-                background:
-                    radial-gradient(circle at 20% 0, rgba(34, 197, 94, 0.1), transparent 42%),
-                    radial-gradient(circle at 82% 18%, rgba(124, 58, 237, 0.12), transparent 45%),
-                    #050814;
-                color: #e2e8f0;
-                padding: 3rem 0 1.4rem;
-                font-family: 'Space Grotesk', sans-serif;
+                margin-top: 3rem;
+                border-top: 1px solid rgba(13, 148, 136, 0.12);
+                background: linear-gradient(180deg, #f0fdfa 0%, #e6f7f5 100%);
+                color: #1a2b3c;
+                padding: 3rem 0 1.5rem;
+                font-family: 'DM Sans', sans-serif;
             }
 
-            .yan-footer-wrap {
-                width: min(1120px, 92vw);
-                margin: 0 auto;
-            }
+            .yan-footer-wrap { width: min(1120px, 92vw); margin: 0 auto; }
 
             .yan-footer-grid {
                 display: grid;
                 grid-template-columns: 1.2fr 1fr 1fr;
-                gap: 1.4rem;
+                gap: 1.5rem;
             }
 
             .yan-footer h4 {
-                margin: 0 0 0.7rem;
-                color: #67e8f9;
+                margin: 0 0 0.75rem;
+                color: #0d9488;
                 font-size: 1rem;
+                font-weight: 700;
             }
 
-            .yan-footer p,
-            .yan-footer a,
-            .yan-footer li {
+            .yan-footer p, .yan-footer a, .yan-footer li {
                 margin: 0;
-                color: #cbd5e1;
+                color: #5a6b7c;
                 text-decoration: none;
                 line-height: 1.6;
                 font-size: 0.92rem;
             }
 
-            .yan-footer ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: grid;
-                gap: 0.4rem;
-            }
+            .yan-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+            .yan-footer a:hover { color: #0d9488; }
 
-            .yan-footer a:hover { color: #67e8f9; }
+            .yan-footer-logo { height: 52px; margin-bottom: 0.75rem; object-fit: contain; }
 
-            .yan-footer-logo {
-                height: 56px;
-                margin-bottom: 0.7rem;
-            }
-
-            .yan-socials {
-                display: flex;
-                gap: 0.55rem;
-                margin-top: 0.8rem;
-            }
-
+            .yan-socials { display: flex; gap: 0.5rem; margin-top: 0.85rem; }
             .yan-socials a {
-                width: 34px;
-                height: 34px;
-                border-radius: 999px;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                background: rgba(255, 255, 255, 0.1);
+                background: #fff;
+                color: #0d9488;
+                border: 1px solid rgba(13, 148, 136, 0.2);
+                transition: background 180ms, color 180ms;
             }
+            .yan-socials a:hover { background: #0d9488; color: #fff; }
 
             .yan-footer-bottom {
-                border-top: 1px solid rgba(255, 255, 255, 0.14);
-                margin-top: 1.25rem;
-                padding-top: 0.9rem;
-                font-size: 0.8rem;
-                color: #9fb1d6;
+                border-top: 1px solid rgba(13, 148, 136, 0.12);
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+                font-size: 0.82rem;
+                color: #7a8a9c;
                 text-align: center;
             }
 
             .yan-float {
                 position: fixed;
-                right: 18px;
-                bottom: 18px;
+                right: 20px;
+                bottom: 20px;
                 z-index: 1001;
                 width: 56px;
                 height: 56px;
                 border-radius: 50%;
-                background: linear-gradient(135deg, #22c55e, #16a34a);
+                background: linear-gradient(135deg, #0d9488, #0f766e);
                 color: #fff;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 text-decoration: none;
-                font-size: 1.7rem;
-                box-shadow: 0 14px 28px rgba(34, 197, 94, 0.4);
+                font-size: 1.65rem;
+                box-shadow: 0 12px 28px rgba(13, 148, 136, 0.4);
                 animation: yanPulse 2.4s infinite;
             }
-
             @keyframes yanPulse {
-                0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45); }
-                70% { transform: scale(1.05); box-shadow: 0 0 0 18px rgba(34, 197, 94, 0); }
-                100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+                0% { transform: scale(1); box-shadow: 0 12px 28px rgba(13, 148, 136, 0.4); }
+                70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(13, 148, 136, 0); }
+                100% { transform: scale(1); box-shadow: 0 12px 28px rgba(13, 148, 136, 0.4); }
             }
 
-            @media (max-width: 900px) {
-                .yan-footer-grid { grid-template-columns: 1fr; }
-            }
+            @media (max-width: 900px) { .yan-footer-grid { grid-template-columns: 1fr; } }
         `;
         document.head.appendChild(style);
     }
@@ -125,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="yan-footer-wrap">
                 <div class="yan-footer-grid">
                     <section>
-                        <a href="index.html"><img class="yan-footer-logo" src="images/logo2.png" alt="YAN Travel" /></a>
-                        <p>Modern Sri Lanka transport and tour planning with reliable drivers, quick support, and clear pricing.</p>
+                        <a href="index.html"><img class="yan-footer-logo" src="images/logo2.webp" alt="YAN Travel" /></a>
+                        <p>Reliable Sri Lanka transport and tours with friendly local drivers and fast WhatsApp support.</p>
                         <div class="yan-socials">
                             <a href="https://web.facebook.com/profile.php?id=61581866861276" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="https://www.instagram.com/yan_travel_srilanka/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>

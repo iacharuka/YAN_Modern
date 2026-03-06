@@ -12,42 +12,41 @@
                 max-width: 100%;
                 margin: 0 auto;
                 padding: 1.35rem;
-                border-radius: 1.1rem;
-                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 16px;
+                border: 1px solid rgba(13, 148, 136, 0.16);
                 background:
-                    linear-gradient(140deg, rgba(2, 6, 23, 0.82), rgba(8, 47, 73, 0.65)),
-                    url('images/destinations/sigiriya&kandy.png');
+                    linear-gradient(0deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+                    url('images/banner.webp');
                 background-size: cover;
                 background-position: center;
-                backdrop-filter: blur(14px);
-                box-shadow: 0 22px 42px rgba(2, 6, 23, 0.45);
+                box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08);
                 transform-style: preserve-3d;
                 transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
             }
 
             .yb-box:hover {
                 transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translateY(-3px);
-                border-color: rgba(103, 232, 249, 0.75);
-                box-shadow: 0 28px 48px rgba(2, 6, 23, 0.58);
+                border-color: rgba(13, 148, 136, 0.45);
+                box-shadow: 0 12px 32px rgba(13, 148, 136, 0.14);
             }
 
             .yb-title {
                 margin: 0;
-                color: #e8f1ff;
-                font-size: clamp(1.25rem, 2.8vw, 1.8rem);
-                font-family: 'Sora', sans-serif;
+                color: #1a2b3c;
+                font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+                font-family: 'Outfit', system-ui, -apple-system, Segoe UI, sans-serif;
             }
 
             .yb-sub {
                 margin: 0.45rem 0 0.9rem;
-                color: #d5e2ff;
-                font-size: 1rem;
+                color: #5a6b7c;
+                font-size: 0.98rem;
             }
 
             .yb-form {
                 display: grid;
                 gap: 0.85rem;
-                font-family: 'Space Grotesk', sans-serif;
+                font-family: 'DM Sans', system-ui, -apple-system, Segoe UI, sans-serif;
             }
 
             .yb-form label {
@@ -55,7 +54,7 @@
                 gap: 0.28rem;
                 font-size: 0.78rem;
                 font-weight: 600;
-                color: #dbeafe;
+                color: #1a2b3c;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
             }
@@ -64,9 +63,9 @@
             .yb-form select {
                 width: 100%;
                 border-radius: 0.62rem;
-                border: 1px solid rgba(255, 255, 255, 0.24);
-                background: rgba(3, 7, 20, 0.35);
-                color: #eff6ff;
+                border: 1px solid rgba(13, 148, 136, 0.18);
+                background: rgba(248, 250, 252, 0.92);
+                color: #1a2b3c;
                 font-family: inherit;
                 font-size: 1rem;
                 padding: 0.82rem 0.9rem;
@@ -74,12 +73,12 @@
                 transition: border-color 180ms ease, background-color 180ms ease;
             }
 
-            .yb-form input::placeholder { color: #bfd0fa; }
+            .yb-form input::placeholder { color: rgba(90, 107, 124, 0.85); }
 
             .yb-form input:focus,
             .yb-form select:focus {
-                border-color: #67e8f9;
-                background: rgba(3, 7, 20, 0.55);
+                border-color: #0d9488;
+                background: #ffffff;
             }
 
             .yb-row {
@@ -91,7 +90,7 @@
             .yb-submit {
                 width: 100%;
                 border: 0;
-                background: linear-gradient(130deg, #22c55e, #16a34a);
+                background: linear-gradient(135deg, #0d9488, #0f766e);
                 color: #fff;
                 font-weight: 700;
                 border-radius: 0.65rem;
@@ -103,24 +102,24 @@
                 cursor: pointer;
                 margin-top: 0.35rem;
                 transition: transform 220ms ease;
-                box-shadow: 0 10px 24px rgba(22, 163, 74, 0.35);
+                box-shadow: 0 10px 24px rgba(13, 148, 136, 0.28);
             }
 
             .yb-submit:hover { transform: translateY(-2px); }
 
             .yb-proof {
                 margin-top: 0.85rem;
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                border: 1px solid rgba(13, 148, 136, 0.16);
                 border-radius: 0.85rem;
                 padding: 0.75rem;
-                background: rgba(2, 6, 23, 0.32);
-                color: #dbeafe;
+                background: rgba(13, 148, 136, 0.06);
+                color: #5a6b7c;
                 font-size: 0.83rem;
                 line-height: 1.5;
             }
 
             .yb-proof strong {
-                color: #67e8f9;
+                color: #0d9488;
                 font-weight: 700;
             }
 
@@ -155,6 +154,20 @@
         setTimeout(function () {
             window.location.href = url;
         }, 900);
+    }
+
+    function trackBookingEvent(name, details) {
+        var payload = Object.assign({
+            event: 'yan_event',
+            event_name: name,
+            page: 'booking_form',
+            timestamp: new Date().toISOString()
+        }, details || {});
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, details || {});
+        }
     }
 
     function createMarkup(options) {
@@ -267,6 +280,12 @@
                 'Please confirm availability and price.'
             ].join('\n');
 
+            trackBookingEvent('booking_form_submitted', {
+                trip_type: tripType,
+                vehicle: vehicle,
+                passengers: pax,
+                source_page: pageName
+            });
             showLoadingAndRedirect('https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message));
         });
     }
